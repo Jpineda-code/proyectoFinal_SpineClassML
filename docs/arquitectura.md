@@ -1,3 +1,4 @@
+```mermaid
 flowchart LR
     U["Usuario / estudiante"]
     S["SpineClass ML<br/>Sistema de clasificación"]
