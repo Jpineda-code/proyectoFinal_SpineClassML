@@ -76,7 +76,15 @@ Se utilizarán las siguientes métricas:
 
 Los resultados reales se almacenarán en `reports/metrics.csv` y `reports/classification_report.csv`. La matriz de confusión se generará en `reports/figures/confusion_matrix.png`.
 
-La aceptación del modelo se evaluará utilizando los criterios definidos en la metodología. Los resultados no se considerarán satisfactorios únicamente por obtener un accuracy elevado.
+La aceptación del modelo se evaluará utilizando los siguientes criterios. Los resultados no se considerarán satisfactorios únicamente por obtener un accuracy elevado.
+
+| Criterio | Umbral propuesto |
+|---|---|
+| F1-score macro del árbol | ≥ 0,10 puntos absolutos por encima del baseline |
+| Recall de cada clase | ≥ 0,50 |
+| Reproducibilidad | Mismos resultados con los mismos datos y parámetros |
+
+En los resultados actuales, el árbol supera al baseline en F1-score macro (0,665 frente a 0,217), pero la condición de recall por clase no se cumple, ya que la clase Normal alcanza 0,40 frente al umbral de 0,50.
 
 ## 9. Riesgos técnicos
 
@@ -122,7 +130,7 @@ Ejecutar las pruebas:
 python -m pytest -v
 ```
 
-Para revisar el análisis exploratorio, abrir `notebooks/01_exploracion_y_modelado.ipynb` en Jupyter o Visual Studio Code.
+Para revisar el análisis exploratorio, abrir `notebook/01_exploracion_y_modelado.ipynb` en Jupyter o Visual Studio Code.
 
 ## 12. Estructura del repositorio
 
@@ -143,7 +151,15 @@ Para revisar el análisis exploratorio, abrir `notebooks/01_exploracion_y_modela
 - **Sobreajuste:** situación en la que un modelo aprende demasiado los datos de entrenamiento y no generaliza adecuadamente.
 - **Data leakage:** uso indebido de información que no debería estar disponible durante el entrenamiento.
 
-## 14. Referencias
+## 14. Conclusiones
+
+En el experimento realizado, el árbol de decisión obtuvo un accuracy de 0.726 y un F1-score macro de 0.665, superando al modelo de referencia, cuyo F1-score macro fue de 0.217. La diferencia evidencia una mejora en la clasificación de las tres categorías del conjunto de prueba.
+
+Sin embargo, el desempeño fue desigual entre clases. El modelo identificó correctamente 28 de 30 observaciones de Spondylolisthesis, 9 de 12 de Hernia y 8 de 20 de Normal. La clase Normal presentó la mayor cantidad de errores, por lo que el accuracy global no describe por sí solo el comportamiento del clasificador.
+
+Los resultados corresponden a una evaluación educativa sobre un conjunto de datos público y una partición específica de entrenamiento y prueba. No permiten concluir que el modelo sea adecuado para diagnosticar pacientes ni que generalice a otras poblaciones. Como trabajo futuro, se recomienda ampliar la evaluación con validación cruzada, revisar los errores por clase y estudiar la representatividad de los datos.
+
+## 15. Referencias
 
 Barreto, G., & Neto, A. (2005). *Vertebral Column* [Conjunto de datos]. UCI Machine Learning Repository. https://doi.org/10.24432/C5K89C.
 
