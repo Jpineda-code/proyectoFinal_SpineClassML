@@ -143,11 +143,7 @@ Para revisar el análisis exploratorio, abrir `notebooks/01_exploracion_y_modela
 - **Sobreajuste:** situación en la que un modelo aprende demasiado los datos de entrenamiento y no generaliza adecuadamente.
 - **Data leakage:** uso indebido de información que no debería estar disponible durante el entrenamiento.
 
-## 14. Conclusiones
-
-Completar esta sección después de ejecutar el experimento. Incluir las métricas reales, la comparación con el baseline, las principales clases de error, el cumplimiento de los criterios de aceptación y las recomendaciones de mejora.
-
-## 15. Referencias
+## 14. Referencias
 
 Barreto, G., & Neto, A. (2005). *Vertebral Column* [Conjunto de datos]. UCI Machine Learning Repository. https://doi.org/10.24432/C5K89C.
 
